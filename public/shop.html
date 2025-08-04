@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop – My Clothing Brand</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>My Clothing Brand</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+ 
+
+  <main>
+    <h2>Shop Our Collection</h2>
+    <div class="products">
+      <!-- Example Product -->
+      <div class="product">
+        <img src="../images/shirt1.jpg" alt="Cool Shirt" />
+        <h3>Cool Shirt</h3>
+        <p>$25</p>
+        <button onclick="addToCart('Classic White Shirt', 25)">Add to Cart</button>
+
+      </div>
+      <div class="products">
+  <div class="product">
+    <img src="D:\MCA S\Practicals\Clothing Brand\images\shirt1.webp" alt="Classic White Shirt" />
+    <h3>Classic White Shirt</h3>
+    <p>$25</p>
+    <button onclick="addToCart('Classic White Shirt', 25)">Add to Cart</button>
+
+  </div>
+  <div class="product">
+    <img src="images\shirt2.webp" alt="Blue Denim Jacket" />
+    <h3>Blue Denim Jacket</h3>
+    <p>$40</p>
+    <button onclick="addToCart('Classic White Shirt', 25)">Add to Cart</button>
+
+  </div>
+  <!-- Add more products the same way! -->
+</div>
+
+      <!-- Add more product cards here as you add more images and items -->
+    </div>
+     <div id="cart">
+  <h3>Cart</h3>
+  <ul id="cart-items"></ul>
+  <button onclick="clearCart()">Clear Cart</button>
+</div>
+  </main>
+  <footer>
+    <p>© 2025 My Clothing Brand. All rights reserved.</p>
+  </footer>
+  <script src="../js/cart.js"></script>
+
+</body>
+</html>

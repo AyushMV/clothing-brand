@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Panel - Add Product</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Add New Product</h2>
+    <form id="product-form">
+      <input type="text" id="name" placeholder="Product Name" required /><br /><br />
+      <input type="number" id="price" placeholder="Price" required /><br /><br />
+      <button type="submit">Add Product</button>
+    </form>
+    <p id="message"></p>
+  </main>
+
+  <script>
+    const form = document.getElementById('product-form');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const price = parseFloat(document.getElementById('price').value);
+
+      if (!name || isNaN(price)) {
+        message.textContent = 'Please enter valid product name and price.';
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/products', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, price })
+        });
+
+        if (response.ok) {
+          const product = await response.json();
+          message.textContent = `Product "${product.name}" added successfully!`;
+          form.reset();
+        } else {
+          message.textContent = 'Failed to add product.';
+        }
+      } catch (error) {
+        message.textContent = 'Error: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
